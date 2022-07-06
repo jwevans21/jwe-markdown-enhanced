@@ -1,18 +1,20 @@
 {
    "name": "jwe-markdown-enhanced",
    "displayName": "JWE Markdown Enhanced",
-   "description": "",
+   "description": "An extension to the markdown syntax that allows for easier editing and export of markdown as html and PDFs",
    "author": {
       "name": "Jacob Evans",
       "email": "jacob@jwevans.dev",
       "url": "https://jwevans.dev"
    },
+   "publisher": "jwevans",
    "license": "MIT",
    "version": "0.0.1",
    "engines": {
       "vscode": "^1.68.0"
    },
    "categories": [
+      "Language Packs",
       "Other"
    ],
    "activationEvents": [

@@ -7,6 +7,7 @@ import { convertToHtml } from '../common/convertToHtml';
 
 import { extendMarkdownIt } from '../common/extendMarkdownIt';
 import { convertToPdf } from './convertToPdf';
+import { foldYaml } from '../common/yamlFolding';
 
 export function activate(context: vscode.ExtensionContext) {
    console.log(
@@ -14,6 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
    );
 
    editingCommands.register(context);
+
+   foldYaml();
 
    return {
       extendMarkdownIt: (md: MarkdownIt) => {
