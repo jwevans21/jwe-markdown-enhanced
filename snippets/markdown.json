@@ -1,0 +1,7 @@
+{
+   "Code Block": {
+      "prefix": "```",
+      "body": "```$1\n$TM_SELECTED_TEXT\n$0\n```",
+      "description": "Inserts a code block"
+   }
+}
