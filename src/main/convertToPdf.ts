@@ -1,7 +1,7 @@
 import type MarkdownIt = require('markdown-it');
 import * as vscode from 'vscode';
 
-import * as puppeteer from 'puppeteer';
+import { launch, PDFOptions, PaperFormat } from 'puppeteer';
 
 import { getConfig, toHtml } from '../common/utils';
 
@@ -20,63 +20,54 @@ export function convertToPdf(md: MarkdownIt) {
             return;
          }
 
-         const markdown = editor.document.getText();
-         const htmlFilePath = editor.document.uri
-            .toString()
-            .replace(/\.md$/, `.${Date.now()}.tmp.html`);
-         const htmlFileURI = vscode.Uri.parse(htmlFilePath);
+         const document = editor.document;
+         const content = document.getText();
+         const filePathArray = document.uri.path.split('/');
+
+         const uri = document.uri;
+         const saveURI = uri.fsPath.replace(/.(\w+)$/, '.pdf');
+         const tempPath = vscode.Uri.parse(
+            `${uri.path.replace('.md', '')}.${Date.now()}.tmp.html`
+         );
          vscode.window.withProgress(
             {
                location: vscode.ProgressLocation.Notification,
                title: 'Converting to PDF',
             },
             async () => {
-               const html = toHtml(md, markdown);
-               const browser = await puppeteer.launch();
+               const browser = await launch({
+                  ignoreDefaultArgs: ['--disable-extensions'],
+               });
                const page = await browser.newPage();
-               await vscode.workspace.fs.writeFile(
-                  htmlFileURI,
-                  Buffer.from(html)
-               );
-               await page.goto(htmlFileURI.toString());
-               const config: puppeteer.PDFOptions = {
-                  displayHeaderFooter: getConfig<boolean>(
+               const html = await toHtml(md, content);
+               await vscode.workspace.fs.writeFile(tempPath, Buffer.from(html));
+               await page.goto(tempPath.fsPath, {
+                  waitUntil: 'networkidle2',
+               });
+
+               const config = {
+                  path: saveURI,
+                  format: getConfig<PaperFormat>('pdf.format', 'Letter'),
+                  displayHeaderFooter: getConfig(
                      'pdf.displayHeaderFooter',
                      false
                   ),
                   headerTemplate: getConfig('pdf.headerTemplate', ''),
                   footerTemplate: getConfig('pdf.footerTemplate', ''),
-                  landscape: getConfig<boolean>('pdf.landscape', false),
-                  format: getConfig<puppeteer.PaperFormat>(
-                     'pdf.format',
-                     'Letter'
-                  ),
-                  margin: {
-                     bottom: getConfig('pdf.margin.bottom', 0),
-                     left: getConfig('pdf.margin.left', 0),
-                     right: getConfig('pdf.margin.right', 0),
-                     top: getConfig('pdf.margin.top', 0),
-                  },
-                  timeout: getConfig<number>('pdf.timeout', 30000),
+                  landscape: getConfig('pdf.landscape', false),
+                  timeout: getConfig('pdf.timeout', 30000),
+                  printBackground: true,
+                  margin: getConfig('pdf.margin', {
+                     top: '1cm',
+                     right: '1cm',
+                     bottom: '1cm',
+                     left: '1cm',
+                  }),
                };
-               try {
-                  const pdf = await page.pdf(config);
 
-                  const pdfFilePath = editor.document.uri
-                     .toString()
-                     .replace('.md', '.pdf');
-
-                  console.log(pdfFilePath);
-
-                  await vscode.workspace.fs.writeFile(
-                     vscode.Uri.parse(pdfFilePath),
-                     pdf
-                  );
-                  await browser.close();
-                  await vscode.workspace.fs.delete(htmlFileURI);
-               } catch (e) {
-                  console.log(e);
-               }
+               await page.pdf(config);
+               await browser.close();
+               await vscode.workspace.fs.delete(tempPath);
             }
          );
       }

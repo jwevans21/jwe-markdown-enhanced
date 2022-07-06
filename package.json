@@ -25,10 +25,6 @@
    "contributes": {
       "commands": [
          {
-            "command": "jwe-markdown-enhanced.helloWorld",
-            "title": "Hello World"
-         },
-         {
             "command": "jwe-markdown-enhanced.convertToHtml",
             "title": "Convert to HTML",
             "category": "JWE Markdown Enhanced"
@@ -156,7 +152,7 @@
                "title": "Convert to HTML",
                "category": "JWE Markdown Enhanced",
                "group": "jwe-markdown-enhanced@10",
-               "when": "editorLangId == markdown"
+               "when": "!isWeb && editorLangId == markdown"
             },
             {
                "command": "jwe-markdown-enhanced.convertToPdf",
@@ -368,6 +364,6 @@
       "markdown-it-sub": "^1.0.0",
       "markdown-it-sup": "^1.0.0",
       "markdown-it-task-lists": "^2.1.1",
-      "puppeteer": "^15.3.0"
+      "puppeteer": "^15.3.1"
    }
 }

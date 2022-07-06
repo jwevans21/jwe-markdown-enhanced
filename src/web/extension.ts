@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import type MarkdownIt = require('markdown-it');
 
-import * as emoji from 'markdown-it-emoji';
+import * as editingCommands from '../common/editingCommands';
 
 import { convertToHtml } from '../common/convertToHtml';
 
@@ -12,16 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
    console.log(
       'Congratulations, your extension "jwe-markdown-enhanced" is now active!'
    );
-   context.subscriptions.push(
-      vscode.commands.registerCommand(
-         'jwe-markdown-enhanced.helloWorld',
-         () => {
-            vscode.window.showInformationMessage(
-               'Hello World from jwe-markdown-enhanced!'
-            );
-         }
-      )
-   );
+
+   editingCommands.register(context);
 
    return {
       extendMarkdownIt: (md: MarkdownIt) => {
