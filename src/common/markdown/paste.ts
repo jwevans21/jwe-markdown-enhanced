@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
 
+/* DOES NOT WORK ON SAFARI SO REMOVED
 /*
  * Function from https://github.com/yzhang-gh/vscode-markdown/blob/ff0e18ff018c88e99c38a2686c63536f0df9d4a4/src/formatting.ts#L259
  * Licensed under the MIT license
  */
-function createLinkRegex(): RegExp {
+/*function createLinkRegex(): RegExp {
    // unicode letters range(must not be a raw string)
    const ul = '\\u00a1-\\uffff';
    // IP patterns
@@ -26,7 +27,7 @@ function createLinkRegex(): RegExp {
       ul +
       '-]{2,63}' + // domain label
       '|xn--[a-z0-9]{1,59})' + // or punycode label
-      '(?<!-)' + // can't end with a dash
+      '(?!-)' + // can't end with a dash
       '\\.?'; // may have a trailing dot
    const host_re = '(' + hostname_re + domain_re + tld_re + '|localhost)';
    const pattern =
@@ -43,10 +44,20 @@ function createLinkRegex(): RegExp {
       '(?::\\d{2,5})?' + // port
       '(?:[/?#][^\\s]*)?' + // resource path
       '$'; // end of string
-   return new RegExp(pattern, 'i');
-}
+   return new RegExp(
+      pattern,
+      'i'
+   );
+} 
+*/
 
-const linkRegex = createLinkRegex();
+/*
+ * From: https://urlregex.com/
+ */
+const linkRegex = new RegExp(
+   /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/,
+   'i'
+);
 
 /*
  * Function Modified from https://github.com/yzhang-gh/vscode-markdown/blob/ff0e18ff018c88e99c38a2686c63536f0df9d4a4/src/formatting.ts#L202
