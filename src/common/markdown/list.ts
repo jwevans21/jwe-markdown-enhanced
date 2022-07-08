@@ -14,24 +14,35 @@ function asNormal(
    key: 'enter' | 'tab' | 'backspace',
    modifier?: 'ctrl' | 'shift' | 'alt'
 ) {
-   if (key === 'enter') {
-      if (modifier === 'ctrl') {
-         return vscode.commands.executeCommand('editor.action.insertLineAfter');
-      } else {
-         return vscode.commands.executeCommand('type', {
-            source: 'keyboard',
-            text: '\n',
-         });
-      }
-   } else if (key === 'tab') {
-      return vscode.commands.executeCommand('tab');
-   } else if (key === 'backspace') {
-      return vscode.commands.executeCommand('deleteLeft');
-   } else {
-      return vscode.commands.executeCommand('type', {
-         source: 'keyboard',
-         text: key,
-      });
+   switch (key) {
+      case 'enter':
+         if (modifier === 'ctrl') {
+            return vscode.commands.executeCommand(
+               'editor.action.insertLineAfter'
+            );
+         } else {
+            return vscode.commands.executeCommand('type', {
+               source: 'keyboard',
+               text: '\n',
+            });
+         }
+      case 'tab':
+         if (modifier === 'shift') {
+            return vscode.commands.executeCommand('editor.action.outdentLines');
+         } else if (
+            vscode.window.activeTextEditor?.selection.isEmpty &&
+            vscode.workspace
+               .getConfiguration('emmet')
+               .get<boolean>('triggerExpansionOnTab')
+         ) {
+            return vscode.commands.executeCommand(
+               'editor.emmet.action.expandAbbreviation'
+            );
+         } else {
+            return vscode.commands.executeCommand('tab');
+         }
+      case 'backspace':
+         return vscode.commands.executeCommand('deleteLeft');
    }
 }
 

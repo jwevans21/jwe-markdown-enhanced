@@ -62,7 +62,7 @@
          },
          {
             "command": "jwe-markdown-enhanced.onTab",
-            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown && !inlineSuggestionVisible",
             "key": "Tab",
             "mac": "Tab"
          },
@@ -137,12 +137,6 @@
             "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
             "key": "Shift+Alt+C",
             "mac": "Shift+Alt+C"
-         },
-         {
-            "command": "jwe-markdown-enhanced.toggleCode",
-            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-            "key": "`",
-            "mac": "`"
          },
          {
             "command": "jwe-markdown-enhanced.toggleCodeBlock",
