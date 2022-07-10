@@ -73,7 +73,7 @@ function blockquoteRanges(
 ): vscode.FoldingRange[] {
    let ranges: vscode.FoldingRange[] = [];
 
-   const blockquoteRegex = /^>\s+/;
+   const blockquoteRegex = /^>\s*/;
 
    for (let i = 0; i < document.lineCount; i++) {
       if (blockquoteRegex.test(document.lineAt(i).text)) {
@@ -127,7 +127,7 @@ function definitionListRanges(
             } else if (definitionListRegex.test(document.lineAt(j + 1).text)) {
                continue;
             } else if (!definitionListRegex.test(document.lineAt(j + 1).text)) {
-               ranges.push(new vscode.FoldingRange(start, j - 1));
+               ranges.push(new vscode.FoldingRange(start, j));
                i = j;
                j = document.lineCount;
             }

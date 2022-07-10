@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 import yamlRanges from './frontmatter';
 import listRanges from './list';
+import tableRanges from './table';
 
 export default class MarkdownFoldingProvider implements vscode.FoldingRangeProvider {
    provideFoldingRanges(
@@ -18,7 +19,7 @@ export default class MarkdownFoldingProvider implements vscode.FoldingRangeProvi
       ranges = ranges.concat(ranges, listRanges(document));
 
       // Get table ranges
-      // TODO: Implement table folding
+      ranges = ranges.concat(ranges, tableRanges(document));
 
       return ranges;
    }
