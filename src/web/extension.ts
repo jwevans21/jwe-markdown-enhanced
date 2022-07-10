@@ -7,7 +7,6 @@ import * as editingCommands from '../common/editingCommands';
 import { convertToHtml } from '../common/convertToHtml';
 
 import { extendMarkdownIt } from '../common/extendMarkdownIt';
-import { foldYaml } from '../common/yamlFolding';
 import MarkdownFoldingProvider from '../common/folding';
 
 export function activate(context: vscode.ExtensionContext) {

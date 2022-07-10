@@ -7,7 +7,6 @@ import { convertToHtml } from '../common/convertToHtml';
 
 import { extendMarkdownIt } from '../common/extendMarkdownIt';
 import { convertToPdf } from './convertToPdf';
-import { foldYaml } from '../common/yamlFolding';
 
 import MarkdownFoldingProvider from '../common/folding';
 

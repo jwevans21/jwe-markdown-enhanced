@@ -13,13 +13,13 @@ export default class MarkdownFoldingProvider implements vscode.FoldingRangeProvi
       let ranges: vscode.FoldingRange[] = [];
 
       // Get frontmatter range
-      ranges = ranges.concat(ranges, yamlRanges(document));
+      ranges = ranges.concat(yamlRanges(document));
 
       // Get list ranges
-      ranges = ranges.concat(ranges, listRanges(document));
+      ranges = ranges.concat(listRanges(document));
 
       // Get table ranges
-      ranges = ranges.concat(ranges, tableRanges(document));
+      ranges = ranges.concat(tableRanges(document));
 
       return ranges;
    }
