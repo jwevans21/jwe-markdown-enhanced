@@ -9,6 +9,8 @@ import { extendMarkdownIt } from '../common/extendMarkdownIt';
 import { convertToPdf } from './convertToPdf';
 import { foldYaml } from '../common/yamlFolding';
 
+import MarkdownFoldingProvider from '../common/folding';
+
 export function activate(context: vscode.ExtensionContext) {
    console.log(
       'Congratulations, your extension "jwe-markdown-enhanced" is now active!'
@@ -16,7 +18,12 @@ export function activate(context: vscode.ExtensionContext) {
 
    editingCommands.register(context);
 
-   foldYaml();
+   context.subscriptions.push(
+      vscode.languages.registerFoldingRangeProvider(
+         { language: 'markdown' },
+         new MarkdownFoldingProvider()
+      )
+   );
 
    return {
       extendMarkdownIt: (md: MarkdownIt) => {
