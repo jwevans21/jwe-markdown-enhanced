@@ -82,7 +82,6 @@ export function onEnter(modifier?: 'ctrl' | 'shift' | 'alt') {
 
    if (line.text.match(regex.unorderedListItem)) {
       const matches = line.text.match(regex.unorderedListItem) || [];
-      console.log(matches);
       return editor
          .edit((editBuilder) => {
             editBuilder.delete(new vscode.Range(lineBreakPos, line.range.end));
