@@ -284,6 +284,38 @@
             }
           ],
           "while": "((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)"
+        },
+        {
+          "begin": "(^|\\G)([ ]{0,3})(:)([ \\t])",
+          "beginCaptures": {
+            "3": {
+              "name": "punctuation.definition.list.begin.markdown"
+            }
+          },
+          "while": "((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)",
+          "name": "markup.list.definition.markdown",
+          "patterns": [
+            {
+              "include": "#block"
+            },
+            {
+              "include": "#list_paragraph"
+            }
+          ]
+        },
+        {
+          "match": "([w ]+)(?=\n:)",
+          "captures": {
+            "1": {
+              "name": "markup.raw.markdown"
+            }
+          },
+          "name": "markup.list.definition.title.markdown",
+          "patterns": [
+            {
+              "include": "#inline"
+            }
+          ]
         }
       ]
     },
@@ -2478,6 +2510,12 @@
           "include": "#italic"
         },
         {
+          "include": "#underline"
+        },
+        {
+          "include": "#mark"
+        },
+        {
           "include": "#image-inline"
         },
         {
@@ -2548,6 +2586,12 @@
         },
         {
           "include": "#italic"
+        },
+        {
+          "include": "#underline"
+        },
+        {
+          "include": "#mark"
         },
         {
           "include": "#image-inline"
@@ -2705,6 +2749,12 @@
         },
         {
           "include": "#italic"
+        },
+        {
+          "include": "#underline"
+        },
+        {
+          "include": "#mark"
         },
         {
           "include": "#image-inline"
@@ -2933,6 +2983,12 @@
               "include": "#italic"
             },
             {
+              "include": "#underline"
+            },
+            {
+              "include": "#mark"
+            },
+            {
               "include": "#image-inline"
             },
             {
@@ -2967,6 +3023,160 @@
       },
       "match": "(~{2,})((?:[^~]|(?!(?<!~)\\1(?!~))~)*+)(\\1)",
       "name": "markup.strikethrough.markdown"
+    },
+    "underline": {
+      "match": "(\\+{2})((?:[^\\+]|(?!(?<!\\+)\\1(?!\\+))\\+)*+)(\\1)",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.underline.markdown"
+        },
+        "2": {
+          "patterns": [
+            {
+              "applyEndPatternLast": 1,
+              "begin": "(?=<[^>]*?>)",
+              "end": "(?<=>)",
+              "patterns": [
+                {
+                  "include": "text.html.derivative"
+                }
+              ]
+            },
+            {
+              "include": "#escape"
+            },
+            {
+              "include": "#ampersand"
+            },
+            {
+              "include": "#bracket"
+            },
+            {
+              "include": "#raw"
+            },
+            {
+              "include": "#bold"
+            },
+            {
+              "include": "#italic"
+            },
+            {
+              "include": "#underline"
+            },
+            {
+              "include": "#mark"
+            },
+            {
+              "include": "#image-inline"
+            },
+            {
+              "include": "#link-inline"
+            },
+            {
+              "include": "#link-inet"
+            },
+            {
+              "include": "#link-email"
+            },
+            {
+              "include": "#image-ref"
+            },
+            {
+              "include": "#link-ref-literal"
+            },
+            {
+              "include": "#link-ref"
+            },
+            {
+              "include": "#link-ref-shortcut"
+            },
+            {
+              "include": "#strikethrough"
+            }
+          ]
+        },
+        "3": {
+          "name": "punctuation.definition.underline.markdown"
+        }
+      },
+      "name": "markup.underline.markdown"
+    },
+    "mark": {
+      "match": "(={2,})((?:[^=]|(?!(?<!=)\\1(?!=))=)*+)(\\1)",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.mark.markdown"
+        },
+        "2": {
+          "patterns": [
+            {
+              "applyEndPatternLast": 1,
+              "begin": "(?=<[^>]*?>)",
+              "end": "(?<=>)",
+              "patterns": [
+                {
+                  "include": "text.html.derivative"
+                }
+              ]
+            },
+            {
+              "include": "#escape"
+            },
+            {
+              "include": "#ampersand"
+            },
+            {
+              "include": "#bracket"
+            },
+            {
+              "include": "#raw"
+            },
+            {
+              "include": "#bold"
+            },
+            {
+              "include": "#italic"
+            },
+            {
+              "include": "#underline"
+            },
+            {
+              "include": "#mark"
+            },
+            {
+              "include": "#image-inline"
+            },
+            {
+              "include": "#link-inline"
+            },
+            {
+              "include": "#link-inet"
+            },
+            {
+              "include": "#link-email"
+            },
+            {
+              "include": "#image-ref"
+            },
+            {
+              "include": "#link-ref-literal"
+            },
+            {
+              "include": "#link-ref"
+            },
+            {
+              "include": "#link-ref-shortcut"
+            },
+            {
+              "include": "#strikethrough"
+            }
+          ]
+        },
+        "3": {
+          "name": "punctuation.definition.mark.markdown"
+        }
+      },
+      "name": "markup.mark.markdown"
     }
   }
 }

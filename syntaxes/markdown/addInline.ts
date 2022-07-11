@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { Repository } from "./types";
+import type { Repository } from './types';
 
 export const inlineRules = [
    {
@@ -19,6 +19,12 @@ export const inlineRules = [
    },
    {
       include: '#italic',
+   },
+   {
+      include: '#underline',
+   },
+   {
+      include: '#mark',
    },
    {
       include: '#image-inline',
@@ -49,7 +55,7 @@ export const inlineRules = [
    },
 ];
 
-export function addInlineSyntaxToRepository(repository: Repository){
+export function addInlineSyntaxToRepository(repository: Repository) {
    //#region Ampersand
    repository.ampersand = {
       comment:
@@ -209,7 +215,7 @@ export function addInlineSyntaxToRepository(repository: Repository){
                },
             ],
          },
-         ...inlineRules
+         ...inlineRules,
       ],
    };
    //#endregion Italic
@@ -415,7 +421,7 @@ export function addInlineSyntaxToRepository(repository: Repository){
                      },
                   ],
                },
-               ...inlineRules
+               ...inlineRules,
             ],
          },
          '3': {
@@ -428,74 +434,64 @@ export function addInlineSyntaxToRepository(repository: Repository){
    //#endregion Strikethrough
 
    //#region Underline
-   /* repository.underline = {
-      begin: '(?x) (?<open>(\\*\\*(?=\\w)|(?<!\\w)\\*\\*|(?<!\\w)\\b__))(?=\\S) (?=\n  (\n    <[^>]*+>              # HTML tags\n    | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                      # Raw\n    | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+      # Escapes\n    | \\[\n    (\n        (?<square>          # Named group\n          [^\\[\\]\\\\]        # Match most chars\n          | \\\\.            # Escaped chars\n          | \\[ \\g<square>*+ \\]    # Nested brackets\n        )*+\n      \\]\n      (\n        (              # Reference Link\n          [ ]?          # Optional space\n          \\[[^\\]]*+\\]        # Ref name\n        )\n        | (              # Inline Link\n          \\(            # Opening paren\n            [ \\t]*+        # Optional whitespace\n            <?(.*?)>?      # URL\n            [ \\t]*+        # Optional whitespace\n            (          # Optional Title\n              (?<title>[\'"])\n              (.*?)\n              \\k<title>\n            )?\n          \\)\n        )\n      )\n    )\n    | (?!(?<=\\S)\\k<open>).            # Everything besides\n                      # style closer\n  )++\n  (?<=\\S)(?=__\\b|\\*\\*)\\k<open>                # Close\n)\n',
+   repository.underline = {
+      match: '(\\+{2})((?:[^\\+]|(?!(?<!\\+)\\1(?!\\+))\\+)*+)(\\1)',
       captures: {
          '1': {
-            name: 'punctuation.definition.bold.markdown',
+            name: 'punctuation.definition.underline.markdown',
          },
-      },
-      end: '(?<=\\S)(\\1)',
-      name: 'markup.bold.markdown',
-      patterns: [
-         {
-            applyEndPatternLast: 1,
-            begin: '(?=<[^>]*?>)',
-            end: '(?<=>)',
+         '2': {
             patterns: [
                {
-                  include: 'text.html.derivative',
+                  applyEndPatternLast: 1,
+                  begin: '(?=<[^>]*?>)',
+                  end: '(?<=>)',
+                  patterns: [
+                     {
+                        include: 'text.html.derivative',
+                     },
+                  ],
                },
+               ...inlineRules,
             ],
          },
-         {
-            include: '#escape',
+         '3': {
+            name: 'punctuation.definition.underline.markdown',
          },
-         {
-            include: '#ampersand',
-         },
-         {
-            include: '#bracket',
-         },
-         {
-            include: '#raw',
-         },
-         {
-            include: '#bold',
-         },
-         {
-            include: '#italic',
-         },
-         {
-            include: '#image-inline',
-         },
-         {
-            include: '#link-inline',
-         },
-         {
-            include: '#link-inet',
-         },
-         {
-            include: '#link-email',
-         },
-         {
-            include: '#image-ref',
-         },
-         {
-            include: '#link-ref-literal',
-         },
-         {
-            include: '#link-ref',
-         },
-         {
-            include: '#link-ref-shortcut',
-         },
-         {
-            include: '#strikethrough',
-         },
-      ],
-   }; */
+      },
+      name: 'markup.underline.markdown',
+   };
    //#endregion Underline
+
+   //#region Mark
+   repository.mark = {
+      match: '(={2,})((?:[^=]|(?!(?<!=)\\1(?!=))=)*+)(\\1)',
+      captures: {
+         '1': {
+            name: 'punctuation.definition.mark.markdown',
+         },
+         '2': {
+            patterns: [
+               {
+                  applyEndPatternLast: 1,
+                  begin: '(?=<[^>]*?>)',
+                  end: '(?<=>)',
+                  patterns: [
+                     {
+                        include: 'text.html.derivative',
+                     },
+                  ],
+               },
+               ...inlineRules,
+            ],
+         },
+         '3': {
+            name: 'punctuation.definition.mark.markdown',
+         },
+      },
+      name: 'markup.mark.markdown',
+   };
+   //#endregion Mark
 
    return repository;
 }

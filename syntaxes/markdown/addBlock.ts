@@ -240,6 +240,40 @@ export async function addBlockSyntaxToRepository(repository: Repository) {
             ],
             while: new RegExp(/((^|\G)([ ]{2,4}|\t))|(^[ \t]*$)/).source,
          },
+         // Definition lists
+         {
+            begin: new RegExp(/(^|\G)([ ]{0,3})(:)([ \t])/).source,
+            beginCaptures: {
+               3: {
+                  name: 'punctuation.definition.list.begin.markdown',
+               },
+            },
+            while: new RegExp(/((^|\G)([ ]{2,4}|\t))|(^[ \t]*$)/).source,
+            name: 'markup.list.definition.markdown',
+            patterns: [
+               {
+                  include: '#block',
+               },
+               {
+                  include: '#list_paragraph',
+               },
+            ],
+         },
+         // Definition List Titles TODO: FIX THIS, DOES NOT WORK
+         {
+            match: '([w ]+)(?=\n:)',
+            captures: {
+               1:{
+                  name: 'markup.raw.markdown',
+               }
+            },
+            name: 'markup.list.definition.title.markdown',
+            patterns:[
+               {
+                  include: '#inline',
+               }
+            ]
+         },
       ],
    };
    //#endregion Lists
