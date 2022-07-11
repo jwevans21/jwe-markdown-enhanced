@@ -1,0 +1,586 @@
+[
+  {
+    "name": "css",
+    "identifiers": [
+      "css",
+      "css.erb"
+    ],
+    "contentName": "meta.embedded.block.css",
+    "include": "source.css"
+  },
+  {
+    "name": "basic",
+    "identifiers": [
+      "html",
+      "htm",
+      "shtml",
+      "xhtml",
+      "inc",
+      "tmpl",
+      "tpl"
+    ],
+    "contentName": "meta.embedded.block.html",
+    "include": "text.html.basic"
+  },
+  {
+    "name": "ini",
+    "identifiers": [
+      "ini",
+      "conf"
+    ],
+    "contentName": "meta.embedded.block.ini",
+    "include": "source.ini"
+  },
+  {
+    "name": "java",
+    "identifiers": [
+      "java",
+      "bsh"
+    ],
+    "contentName": "meta.embedded.block.java",
+    "include": "source.java"
+  },
+  {
+    "name": "lua",
+    "identifiers": [
+      "lua"
+    ],
+    "contentName": "meta.embedded.block.lua",
+    "include": "source.lua"
+  },
+  {
+    "name": "makefile",
+    "identifiers": [
+      "Makefile",
+      "makefile",
+      "GNUmakefile",
+      "OCamlMakefile"
+    ],
+    "contentName": "meta.embedded.block.makefile",
+    "include": "source.makefile"
+  },
+  {
+    "name": "perl",
+    "identifiers": [
+      "perl",
+      "pl",
+      "pm",
+      "pod",
+      "t",
+      "PL",
+      "psgi",
+      "vcl"
+    ],
+    "contentName": "meta.embedded.block.perl",
+    "include": "source.perl"
+  },
+  {
+    "name": "r",
+    "identifiers": [
+      "R",
+      "r",
+      "s",
+      "S",
+      "Rprofile",
+      "\\{\\.r.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.r",
+    "include": "source.r"
+  },
+  {
+    "name": "ruby",
+    "identifiers": [
+      "ruby",
+      "rb",
+      "rbx",
+      "rjs",
+      "Rakefile",
+      "rake",
+      "cgi",
+      "fcgi",
+      "gemspec",
+      "irbrc",
+      "Capfile",
+      "ru",
+      "prawn",
+      "Cheffile",
+      "Gemfile",
+      "Guardfile",
+      "Hobofile",
+      "Vagrantfile",
+      "Appraisals",
+      "Rantfile",
+      "Berksfile",
+      "Berksfile.lock",
+      "Thorfile",
+      "Puppetfile"
+    ],
+    "contentName": "meta.embedded.block.ruby",
+    "include": "source.ruby"
+  },
+  {
+    "name": "php",
+    "identifiers": [
+      "php",
+      "php3",
+      "php4",
+      "php5",
+      "phpt",
+      "phtml",
+      "aw",
+      "ctp"
+    ],
+    "contentName": "meta.embedded.block.php",
+    "include": "text.html.basic"
+  },
+  {
+    "name": "sql",
+    "identifiers": [
+      "sql",
+      "ddl",
+      "dml"
+    ],
+    "contentName": "meta.embedded.block.sql",
+    "include": "source.sql"
+  },
+  {
+    "name": "vs_net",
+    "identifiers": [
+      "vb"
+    ],
+    "contentName": "meta.embedded.block.vs_net",
+    "include": "source.asp.vb.net"
+  },
+  {
+    "name": "xml",
+    "identifiers": [
+      "xml",
+      "xsd",
+      "tld",
+      "jsp",
+      "pt",
+      "cpt",
+      "dtml",
+      "rss",
+      "opml"
+    ],
+    "contentName": "meta.embedded.block.xml",
+    "include": "text.xml"
+  },
+  {
+    "name": "xsl",
+    "identifiers": [
+      "xsl",
+      "xslt"
+    ],
+    "contentName": "meta.embedded.block.xsl",
+    "include": "text.xml.xsl"
+  },
+  {
+    "name": "yaml",
+    "identifiers": [
+      "yaml",
+      "yml"
+    ],
+    "contentName": "meta.embedded.block.yaml",
+    "include": "source.yaml"
+  },
+  {
+    "name": "dosbatch",
+    "identifiers": [
+      "bat",
+      "batch"
+    ],
+    "contentName": "meta.embedded.block.dosbatch",
+    "include": "source.batchfile"
+  },
+  {
+    "name": "clojure",
+    "identifiers": [
+      "clj",
+      "cljs",
+      "clojure"
+    ],
+    "contentName": "meta.embedded.block.clojure",
+    "include": "source.clojure"
+  },
+  {
+    "name": "coffee",
+    "identifiers": [
+      "coffee",
+      "Cakefile",
+      "coffee.erb"
+    ],
+    "contentName": "meta.embedded.block.coffee",
+    "include": "source.coffee"
+  },
+  {
+    "name": "c",
+    "identifiers": [
+      "c",
+      "h"
+    ],
+    "contentName": "meta.embedded.block.c",
+    "include": "source.c"
+  },
+  {
+    "name": "cpp",
+    "identifiers": [
+      "cpp",
+      "c\\+\\+",
+      "cxx"
+    ],
+    "contentName": "meta.embedded.block.cpp source.cpp",
+    "include": "source.cpp"
+  },
+  {
+    "name": "diff",
+    "identifiers": [
+      "patch",
+      "diff",
+      "rej"
+    ],
+    "contentName": "meta.embedded.block.diff",
+    "include": "source.diff"
+  },
+  {
+    "name": "dockerfile",
+    "identifiers": [
+      "dockerfile",
+      "Dockerfile"
+    ],
+    "contentName": "meta.embedded.block.dockerfile",
+    "include": "source.dockerfile"
+  },
+  {
+    "name": "git_commit",
+    "identifiers": [
+      "COMMIT_EDITMSG",
+      "MERGE_MSG"
+    ],
+    "contentName": "meta.embedded.block.git_commit",
+    "include": "text.git-commit"
+  },
+  {
+    "name": "git_rebase",
+    "identifiers": [
+      "git-rebase-todo"
+    ],
+    "contentName": "meta.embedded.block.git_rebase",
+    "include": "text.git-rebase"
+  },
+  {
+    "name": "go",
+    "identifiers": [
+      "go",
+      "golang"
+    ],
+    "contentName": "meta.embedded.block.go",
+    "include": "source.go"
+  },
+  {
+    "name": "groovy",
+    "identifiers": [
+      "groovy",
+      "gvy"
+    ],
+    "contentName": "meta.embedded.block.groovy",
+    "include": "source.groovy"
+  },
+  {
+    "name": "pug",
+    "identifiers": [
+      "jade",
+      "pug"
+    ],
+    "contentName": "meta.embedded.block.pug",
+    "include": "text.pug"
+  },
+  {
+    "name": "js",
+    "identifiers": [
+      "js",
+      "jsx",
+      "javascript",
+      "es6",
+      "mjs",
+      "cjs",
+      "dataviewjs",
+      "\\{\\.js.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.javascript",
+    "include": "source.js"
+  },
+  {
+    "name": "js_regexp",
+    "identifiers": [
+      "regexp"
+    ],
+    "contentName": "meta.embedded.block.js_regexp",
+    "include": "source.js.regexp"
+  },
+  {
+    "name": "json",
+    "identifiers": [
+      "json",
+      "json5",
+      "sublime-settings",
+      "sublime-menu",
+      "sublime-keymap",
+      "sublime-mousemap",
+      "sublime-theme",
+      "sublime-build",
+      "sublime-project",
+      "sublime-completions"
+    ],
+    "contentName": "meta.embedded.block.json",
+    "include": "source.json"
+  },
+  {
+    "name": "jsonc",
+    "identifiers": [
+      "jsonc"
+    ],
+    "contentName": "meta.embedded.block.jsonc",
+    "include": "source.json.comments"
+  },
+  {
+    "name": "less",
+    "identifiers": [
+      "less"
+    ],
+    "contentName": "meta.embedded.block.less",
+    "include": "source.css.less"
+  },
+  {
+    "name": "objc",
+    "identifiers": [
+      "objectivec",
+      "objective-c",
+      "mm",
+      "objc",
+      "obj-c",
+      "m",
+      "h"
+    ],
+    "contentName": "meta.embedded.block.objc",
+    "include": "source.objc"
+  },
+  {
+    "name": "swift",
+    "identifiers": [
+      "swift"
+    ],
+    "contentName": "meta.embedded.block.swift",
+    "include": "source.swift"
+  },
+  {
+    "name": "scss",
+    "identifiers": [
+      "scss"
+    ],
+    "contentName": "meta.embedded.block.scss",
+    "include": "source.css.scss"
+  },
+  {
+    "name": "perl6",
+    "identifiers": [
+      "perl6",
+      "p6",
+      "pl6",
+      "pm6",
+      "nqp"
+    ],
+    "contentName": "meta.embedded.block.perl6",
+    "include": "source.perl.6"
+  },
+  {
+    "name": "powershell",
+    "identifiers": [
+      "powershell",
+      "ps1",
+      "psm1",
+      "psd1"
+    ],
+    "contentName": "meta.embedded.block.powershell",
+    "include": "source.powershell"
+  },
+  {
+    "name": "python",
+    "identifiers": [
+      "python",
+      "py",
+      "py3",
+      "rpy",
+      "pyw",
+      "cpy",
+      "SConstruct",
+      "Sconstruct",
+      "sconstruct",
+      "SConscript",
+      "gyp",
+      "gypi",
+      "\\{\\.python.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.python",
+    "include": "source.python"
+  },
+  {
+    "name": "julia",
+    "identifiers": [
+      "julia",
+      "\\{\\.julia.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.julia",
+    "include": "source.julia"
+  },
+  {
+    "name": "regexp_python",
+    "identifiers": [
+      "re"
+    ],
+    "contentName": "meta.embedded.block.regexp_python",
+    "include": "source.regexp.python"
+  },
+  {
+    "name": "rust",
+    "identifiers": [
+      "rust",
+      "rs",
+      "\\{\\.rust.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.rust",
+    "include": "source.rust"
+  },
+  {
+    "name": "scala",
+    "identifiers": [
+      "scala",
+      "sbt"
+    ],
+    "contentName": "meta.embedded.block.scala",
+    "include": "source.scala"
+  },
+  {
+    "name": "shell",
+    "identifiers": [
+      "shell",
+      "sh",
+      "bash",
+      "zsh",
+      "bashrc",
+      "bash_profile",
+      "bash_login",
+      "profile",
+      "bash_logout",
+      ".textmate_init",
+      "\\{\\.bash.+?\\}"
+    ],
+    "contentName": "meta.embedded.block.shellscript",
+    "include": "source.shell"
+  },
+  {
+    "name": "ts",
+    "identifiers": [
+      "typescript",
+      "ts"
+    ],
+    "contentName": "meta.embedded.block.typescript",
+    "include": "source.ts"
+  },
+  {
+    "name": "tsx",
+    "identifiers": [
+      "tsx"
+    ],
+    "contentName": "meta.embedded.block.typescriptreact",
+    "include": "source.tsx"
+  },
+  {
+    "name": "csharp",
+    "identifiers": [
+      "cs",
+      "csharp",
+      "c#"
+    ],
+    "contentName": "meta.embedded.block.csharp",
+    "include": "source.cs"
+  },
+  {
+    "name": "fsharp",
+    "identifiers": [
+      "fs",
+      "fsharp",
+      "f#"
+    ],
+    "contentName": "meta.embedded.block.fsharp",
+    "include": "source.fsharp"
+  },
+  {
+    "name": "dart",
+    "identifiers": [
+      "dart"
+    ],
+    "contentName": "meta.embedded.block.dart",
+    "include": "source.dart"
+  },
+  {
+    "name": "handlebars",
+    "identifiers": [
+      "handlebars",
+      "hbs"
+    ],
+    "contentName": "meta.embedded.block.handlebars",
+    "include": "text.html.handlebars"
+  },
+  {
+    "name": "markdown",
+    "identifiers": [
+      "markdown",
+      "md"
+    ],
+    "contentName": "meta.embedded.block.markdown",
+    "include": "text.html.markdown"
+  },
+  {
+    "name": "log",
+    "identifiers": [
+      "log"
+    ],
+    "contentName": "meta.embedded.block.log",
+    "include": "text.log"
+  },
+  {
+    "name": "erlang",
+    "identifiers": [
+      "erlang"
+    ],
+    "contentName": "meta.embedded.block.erlang",
+    "include": "source.erlang"
+  },
+  {
+    "name": "elixir",
+    "identifiers": [
+      "elixir"
+    ],
+    "contentName": "meta.embedded.block.elixir",
+    "include": "source.elixir"
+  },
+  {
+    "name": "latex",
+    "identifiers": [
+      "latex",
+      "tex"
+    ],
+    "contentName": "meta.embedded.block.latex",
+    "include": "text.tex.latex"
+  },
+  {
+    "name": "bibtex",
+    "identifiers": [
+      "bibtex"
+    ],
+    "contentName": "meta.embedded.block.bibtex",
+    "include": "text.bibtex"
+  }
+]

@@ -15,6 +15,9 @@ A personal project to simplify my markdown usage, heavily inspired by [Markdown 
 -  Emojis
 -  MultiMarkdown Tables
 -  Paste Links
+-  Custom Syntax Highlighting
+   -  Defaults taken from [markdown-basics](https://github.com/microsoft/vscode/tree/main/extensions/markdown-basics)
+-  Custom Folding
 
 ## Commands and Keybindings
 
