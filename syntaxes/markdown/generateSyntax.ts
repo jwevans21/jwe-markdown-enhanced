@@ -3,7 +3,7 @@ import type { Patterns, Repository } from './types';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { addBlockSyntaxToRepository } from './addBlock';
-import { addInlineSyntaxToRepository } from './addInline';
+import { inlineRules, addInlineSyntaxToRepository } from './addInline';
 
 async function generateSyntax() {
    const patterns: Patterns = [
@@ -80,53 +80,7 @@ async function generateSyntax() {
 
    //#region Inline Rules
    repository.inline = {
-      patterns: [
-         {
-            include: '#ampersand',
-         },
-         {
-            include: '#bracket',
-         },
-         {
-            include: '#bold',
-         },
-         {
-            include: '#italic',
-         },
-         {
-            include: '#raw',
-         },
-         {
-            include: '#strikethrough',
-         },
-         {
-            include: '#escape',
-         },
-         {
-            include: '#image-inline',
-         },
-         {
-            include: '#image-ref',
-         },
-         {
-            include: '#link-email',
-         },
-         {
-            include: '#link-inet',
-         },
-         {
-            include: '#link-inline',
-         },
-         {
-            include: '#link-ref',
-         },
-         {
-            include: '#link-ref-literal',
-         },
-         {
-            include: '#link-ref-shortcut',
-         },
-      ],
+      patterns: inlineRules,
    };
 
    repository = addInlineSyntaxToRepository(repository);

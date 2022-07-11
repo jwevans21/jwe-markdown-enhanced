@@ -2460,10 +2460,16 @@
     "inline": {
       "patterns": [
         {
+          "include": "#escape"
+        },
+        {
           "include": "#ampersand"
         },
         {
           "include": "#bracket"
+        },
+        {
+          "include": "#raw"
         },
         {
           "include": "#bold"
@@ -2472,37 +2478,31 @@
           "include": "#italic"
         },
         {
-          "include": "#raw"
-        },
-        {
-          "include": "#strikethrough"
-        },
-        {
-          "include": "#escape"
-        },
-        {
           "include": "#image-inline"
-        },
-        {
-          "include": "#image-ref"
-        },
-        {
-          "include": "#link-email"
-        },
-        {
-          "include": "#link-inet"
         },
         {
           "include": "#link-inline"
         },
         {
-          "include": "#link-ref"
+          "include": "#link-inet"
+        },
+        {
+          "include": "#link-email"
+        },
+        {
+          "include": "#image-ref"
         },
         {
           "include": "#link-ref-literal"
         },
         {
+          "include": "#link-ref"
+        },
+        {
           "include": "#link-ref-shortcut"
+        },
+        {
+          "include": "#strikethrough"
         }
       ]
     },
@@ -2702,6 +2702,9 @@
         },
         {
           "include": "#bold"
+        },
+        {
+          "include": "#italic"
         },
         {
           "include": "#image-inline"
@@ -2952,6 +2955,9 @@
             },
             {
               "include": "#link-ref-shortcut"
+            },
+            {
+              "include": "#strikethrough"
             }
           ]
         },

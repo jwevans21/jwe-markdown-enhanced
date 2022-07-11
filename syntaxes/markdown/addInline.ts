@@ -2,8 +2,52 @@
 import type { Repository } from "./types";
 
 export const inlineRules = [
-
-]
+   {
+      include: '#escape',
+   },
+   {
+      include: '#ampersand',
+   },
+   {
+      include: '#bracket',
+   },
+   {
+      include: '#raw',
+   },
+   {
+      include: '#bold',
+   },
+   {
+      include: '#italic',
+   },
+   {
+      include: '#image-inline',
+   },
+   {
+      include: '#link-inline',
+   },
+   {
+      include: '#link-inet',
+   },
+   {
+      include: '#link-email',
+   },
+   {
+      include: '#image-ref',
+   },
+   {
+      include: '#link-ref-literal',
+   },
+   {
+      include: '#link-ref',
+   },
+   {
+      include: '#link-ref-shortcut',
+   },
+   {
+      include: '#strikethrough',
+   },
+];
 
 export function addInlineSyntaxToRepository(repository: Repository){
    //#region Ampersand
@@ -36,51 +80,7 @@ export function addInlineSyntaxToRepository(repository: Repository){
                },
             ],
          },
-         {
-            include: '#escape',
-         },
-         {
-            include: '#ampersand',
-         },
-         {
-            include: '#bracket',
-         },
-         {
-            include: '#raw',
-         },
-         {
-            include: '#bold',
-         },
-         {
-            include: '#italic',
-         },
-         {
-            include: '#image-inline',
-         },
-         {
-            include: '#link-inline',
-         },
-         {
-            include: '#link-inet',
-         },
-         {
-            include: '#link-email',
-         },
-         {
-            include: '#image-ref',
-         },
-         {
-            include: '#link-ref-literal',
-         },
-         {
-            include: '#link-ref',
-         },
-         {
-            include: '#link-ref-shortcut',
-         },
-         {
-            include: '#strikethrough',
-         },
+         ...inlineRules,
       ],
    };
    //#endregion Bold
@@ -209,48 +209,7 @@ export function addInlineSyntaxToRepository(repository: Repository){
                },
             ],
          },
-         {
-            include: '#escape',
-         },
-         {
-            include: '#ampersand',
-         },
-         {
-            include: '#bracket',
-         },
-         {
-            include: '#raw',
-         },
-         {
-            include: '#bold',
-         },
-         {
-            include: '#image-inline',
-         },
-         {
-            include: '#link-inline',
-         },
-         {
-            include: '#link-inet',
-         },
-         {
-            include: '#link-email',
-         },
-         {
-            include: '#image-ref',
-         },
-         {
-            include: '#link-ref-literal',
-         },
-         {
-            include: '#link-ref',
-         },
-         {
-            include: '#link-ref-shortcut',
-         },
-         {
-            include: '#strikethrough',
-         },
+         ...inlineRules
       ],
    };
    //#endregion Italic
@@ -456,48 +415,7 @@ export function addInlineSyntaxToRepository(repository: Repository){
                      },
                   ],
                },
-               {
-                  include: '#escape',
-               },
-               {
-                  include: '#ampersand',
-               },
-               {
-                  include: '#bracket',
-               },
-               {
-                  include: '#raw',
-               },
-               {
-                  include: '#bold',
-               },
-               {
-                  include: '#italic',
-               },
-               {
-                  include: '#image-inline',
-               },
-               {
-                  include: '#link-inline',
-               },
-               {
-                  include: '#link-inet',
-               },
-               {
-                  include: '#link-email',
-               },
-               {
-                  include: '#image-ref',
-               },
-               {
-                  include: '#link-ref-literal',
-               },
-               {
-                  include: '#link-ref',
-               },
-               {
-                  include: '#link-ref-shortcut',
-               },
+               ...inlineRules
             ],
          },
          '3': {
