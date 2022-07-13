@@ -2,7 +2,9 @@ import * as vscode from 'vscode';
 import * as languages from '../../../../markdown.embedded-languages.json';
 import * as customLanguages from '../../../../markdown.custom-embedded-languages.json';
 
-const langs = languages.concat(customLanguages).flatMap((lg) => lg.identifiers);
+/*
+ * TODO: Find out why items are not showing for completion
+ */
 
 export default class CodeBlockCompletionProvider
    implements vscode.CompletionItemProvider
@@ -23,9 +25,10 @@ export default class CodeBlockCompletionProvider
       const pre = line.text.slice(0, position.character);
       const post = line.text.slice(position.character);
 
-      const preExistingMatch = pre.match(/^(`{1,})(?:([\w-]+)?)?$/);
+      const preExistingMatch = pre.match(/^([~`]{1,})([\w-]+)$/);
 
-      const preMatch = preExistingMatch || pre.match(/^(`{1,})$/);
+      const preMatch =
+         preExistingMatch || pre.match(/^([`~]{1,})|([`~]{3,}[\w-]+?)$/);
 
       console.log(preMatch);
 
@@ -34,11 +37,11 @@ export default class CodeBlockCompletionProvider
          return [];
       }
 
-      //const postMatch = post.match(/^(?:(`{1,}|~{1,})?)(.*)/);
+      const postMatch = post.match(/^(?:([`~]{1,})?)([\w-]*)$/);
 
       const replacementSpan = new vscode.Range(
-         position.translate(0, -(preMatch[1].length + preMatch[2].length)),
-         position.translate(0, line.range.end.character)
+         line.range.start,
+         line.range.end
       );
 
       console.log('replacementSpan', replacementSpan);
@@ -50,14 +53,20 @@ export default class CodeBlockCompletionProvider
       replacementSpan: vscode.Range
    ): vscode.CompletionItem[] {
       console.log('CodeBlockCompletionProvider.getLangCompletions');
-      console.log('langs', langs);
-      const items = langs.map((lang) => {
-         const item = new vscode.CompletionItem(lang);
-         item.kind = vscode.CompletionItemKind.Text;
-         item.insertText = lang;
-         item.filterText = lang;
-         item.range = replacementSpan;
-         return item;
+      console.log('langs', languages);
+      const items = languages.flatMap((lang) => {
+         return lang.identifiers.map((id) => {
+            const item = new vscode.CompletionItem(
+               id,
+               vscode.CompletionItemKind.Snippet
+            );
+            item.filterText = `\`\`\`${id}`;
+            item.insertText = new vscode.SnippetString(
+               `\`\`\`${id}\n$0\n\`\`\``
+            );
+            item.range = replacementSpan;
+            return item;
+         });
       });
 
       console.log('items', items);

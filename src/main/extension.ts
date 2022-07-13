@@ -10,6 +10,9 @@ import { convertToPdf } from './convertToPdf';
 
 import MarkdownFoldingProvider from '../common/folding';
 
+import CodeBlockCompletionProvider from '../common/completion/codeblocks';
+import EmojiCompletionProvider from '../common/completion/emoji';
+
 export function activate(context: vscode.ExtensionContext) {
    console.log(
       'Congratulations, your extension "jwe-markdown-enhanced" is now active!'
@@ -19,8 +22,13 @@ export function activate(context: vscode.ExtensionContext) {
 
    context.subscriptions.push(
       vscode.languages.registerFoldingRangeProvider(
-         { language: 'markdown' },
+         'markdown',
          new MarkdownFoldingProvider()
+      ),
+      vscode.languages.registerCompletionItemProvider(
+         'markdown',
+         new EmojiCompletionProvider(),
+         ':'
       )
    );
 

@@ -1,458 +1,459 @@
 {
-  "name": "jwe-markdown-enhanced",
-  "displayName": "JWE Markdown Enhanced",
-  "description": "An extension to the markdown syntax that allows for easier editing and export of markdown as html and PDFs",
-  "author": {
-    "name": "Jacob Evans",
-    "email": "jacob@jwevans.dev",
-    "url": "https://jwevans.dev"
-  },
-  "publisher": "jwevans",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jwevans21/jwe-markdown-enhanced"
-  },
-  "license": "MIT",
-  "version": "0.0.5",
-  "engines": {
-    "vscode": "^1.68.0"
-  },
-  "categories": [
-    "Language Packs",
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:jwe-markdown-enhanced.helloWorld",
-    "onLanguage:markdown",
-    "onCommand:markdown.showPreview"
-  ],
-  "main": "./dist/main/extension.js",
-  "browser": "./dist/web/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "jwe-markdown-enhanced.convertToHtml",
-        "title": "Convert to HTML",
-        "category": "JWE Markdown Enhanced"
-      },
-      {
-        "command": "jwe-markdown-enhanced.convertToPdf",
-        "title": "Convert to PDF",
-        "category": "JWE Markdown Enhanced"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "jwe-markdown-enhanced.paste",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+V",
-        "mac": "Cmd+V"
-      },
-      {
-        "command": "jwe-markdown-enhanced.onEnter",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Enter",
-        "mac": "Enter"
-      },
-      {
-        "command": "jwe-markdown-enhanced.onShiftTab",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Shift+Tab",
-        "mac": "Shift+Tab"
-      },
-      {
-        "command": "jwe-markdown-enhanced.onTab",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown && !inlineSuggestionVisible",
-        "key": "Tab",
-        "mac": "Tab"
-      },
-      {
-        "command": "jwe-markdown-enhanced.onBackspace",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Backspace",
-        "mac": "Backspace"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleHeadingUp",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+Shift+]",
-        "mac": "Cmd+Shift+]"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleHeadingDown",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+Shift+[",
-        "mac": "Cmd+Shift+["
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleBold",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+B",
-        "mac": "Cmd+B"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleItalic",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+I",
-        "mac": "Cmd+I"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleStrikethrough",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+S",
-        "mac": "Cmd+S"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleHighlight",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+H",
-        "mac": "Cmd+H"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleUnderline",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+U",
-        "mac": "Cmd+U"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleSubscript",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+,",
-        "mac": "Cmd+,"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleSuperscript",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+.",
-        "mac": "Cmd+."
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleLink",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Ctrl+K",
-        "mac": "Cmd+K"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleCode",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Shift+Alt+C",
-        "mac": "Shift+Alt+C"
-      },
-      {
-        "command": "jwe-markdown-enhanced.toggleCodeBlock",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
-        "key": "Shift+Alt+B",
-        "mac": "Shift+Alt+B"
-      }
-    ],
-    "menus": {
-      "editor/context": [
-        {
-          "command": "jwe-markdown-enhanced.convertToHtml",
-          "title": "Convert to HTML",
-          "category": "JWE Markdown Enhanced",
-          "group": "jwe-markdown-enhanced@10",
-          "when": "!isWeb && editorLangId == markdown"
-        },
-        {
-          "command": "jwe-markdown-enhanced.convertToPdf",
-          "title": "Convert to PDF",
-          "category": "JWE Markdown Enhanced",
-          "group": "jwe-markdown-enhanced@10",
-          "when": "!isWeb && editorLangId == markdown"
-        }
-      ]
-    },
-    "configuration": {
-      "title": "JWE Markdown Enhanced",
-      "properties": {
-        "jwe-markdown-enhanced.italic": {
-          "type": "string",
-          "default": "*",
-          "description": "The character to use for italic text",
-          "enum": [
-            "*",
-            "_"
-          ]
-        },
-        "jwe-markdown-enhanced.superscript": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable superscript with `x^2^` in markdown preview"
-        },
-        "jwe-markdown-enhanced.subscript": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable subscript with `H~2~0` in markdown preview"
-        },
-        "jwe-enhanced-markdown.highlight": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable highlighting of text with `==Text==` in markdown preview"
-        },
-        "jwe-enhanced-markdown.underline": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable underlining of text with `++Text++` in markdown preview"
-        },
-        "jwe-enhanced-markdown.abbreviations": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable abbreviations with `*[HTML]: Hyper Text Markup Language` in markdown preview"
-        },
-        "jwe-enhanced-markdown.definitionLists": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable definition list with `Term 1\n: Definition 1` in markdown preview"
-        },
-        "jwe-enhanced-markdown.taskLists": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable task list with `- [ ] Task 1` in markdown preview"
-        },
-        "jwe-enhanced-markdown.footnotes": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable footnotes with `[^1]: Footnote 1` in markdown preview"
-        },
-        "jwe-enhanced-markdown.emoji": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable emoji with `:smile:` in markdown preview"
-        },
-        "jwe-enhanced-markdown.enhancedTables": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable enhanced tables with [MultiMarkdown Tables](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html)"
-        },
-        "jwe-enhanced-markdown.pdf.displayHeaderFooter": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Display header and footer in PDF"
-        },
-        "jwe-enhanced-markdown.pdf.headerTemplate": {
-          "type": "string",
-          "default": "",
-          "markdownDescription": "Header template for PDF"
-        },
-        "jwe-enhanced-markdown.pdf.footerTemplate": {
-          "type": "string",
-          "default": "",
-          "markdownDescription": "Footer template for PDF"
-        },
-        "jwe-enhanced-markdown.pdf.format": {
-          "type": "string",
-          "default": "Letter",
-          "enum": [
-            "Letter",
-            "Legal",
-            "Tabloid",
-            "Ledger",
-            "A0",
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6"
-          ],
-          "markdownDescription": "Format for PDF"
-        },
-        "jwe-enhanced-markdown.pdf.landscape": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Landscape for PDF"
-        },
-        "jwe-enhanced-markdown.pdf.timeout": {
-          "type": "number",
-          "default": 30000,
-          "markdownDescription": "Timeout for PDF Generation"
-        },
-        "jwe-enhanced-markdown.pdf.margin": {
-          "type": "object",
-          "default": {
-            "top": "1cm",
-            "right": "1cm",
-            "bottom": "1cm",
-            "left": "1cm"
-          },
-          "properties": {
-            "top": {
-              "type": [
-                "string",
-                "number"
-              ],
-              "default": "1cm"
+   "name": "jwe-markdown-enhanced",
+   "displayName": "JWE Markdown Enhanced",
+   "description": "An extension to the markdown syntax that allows for easier editing and export of markdown as html and PDFs",
+   "author": {
+      "name": "Jacob Evans",
+      "email": "jacob@jwevans.dev",
+      "url": "https://jwevans.dev"
+   },
+   "publisher": "jwevans",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/jwevans21/jwe-markdown-enhanced"
+   },
+   "license": "MIT",
+   "version": "0.0.5",
+   "engines": {
+      "vscode": "^1.68.0"
+   },
+   "categories": [
+      "Language Packs",
+      "Other"
+   ],
+   "activationEvents": [
+      "onCommand:jwe-markdown-enhanced.helloWorld",
+      "onLanguage:markdown",
+      "onCommand:markdown.showPreview"
+   ],
+   "main": "./dist/main/extension.js",
+   "browser": "./dist/web/extension.js",
+   "contributes": {
+      "commands": [
+         {
+            "command": "jwe-markdown-enhanced.convertToHtml",
+            "title": "Convert to HTML",
+            "category": "JWE Markdown Enhanced"
+         },
+         {
+            "command": "jwe-markdown-enhanced.convertToPdf",
+            "title": "Convert to PDF",
+            "category": "JWE Markdown Enhanced"
+         }
+      ],
+      "keybindings": [
+         {
+            "command": "jwe-markdown-enhanced.paste",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+V",
+            "mac": "Cmd+V"
+         },
+         {
+            "command": "jwe-markdown-enhanced.onEnter",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown && !inlineSuggestionVisible && !hasSnippetCompletions",
+            "key": "Enter",
+            "mac": "Enter"
+         },
+         {
+            "command": "jwe-markdown-enhanced.onShiftTab",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Shift+Tab",
+            "mac": "Shift+Tab"
+         },
+         {
+            "command": "jwe-markdown-enhanced.onTab",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown && !inlineSuggestionVisible && !hasSnippetCompletions && !editorHasCompletionItemProvider",
+            "key": "Tab",
+            "mac": "Tab"
+         },
+         {
+            "command": "jwe-markdown-enhanced.onBackspace",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Backspace",
+            "mac": "Backspace"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleHeadingUp",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+Shift+]",
+            "mac": "Cmd+Shift+]"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleHeadingDown",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+Shift+[",
+            "mac": "Cmd+Shift+["
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleBold",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+B",
+            "mac": "Cmd+B"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleItalic",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+I",
+            "mac": "Cmd+I"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleStrikethrough",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+S",
+            "mac": "Cmd+S"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleHighlight",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+H",
+            "mac": "Cmd+H"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleUnderline",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+U",
+            "mac": "Cmd+U"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleSubscript",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+,",
+            "mac": "Cmd+,"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleSuperscript",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+.",
+            "mac": "Cmd+."
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleLink",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Ctrl+K",
+            "mac": "Cmd+K"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleCode",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Shift+Alt+C",
+            "mac": "Shift+Alt+C"
+         },
+         {
+            "command": "jwe-markdown-enhanced.toggleCodeBlock",
+            "when": "editorTextFocus && !editorReadonly && editorLangId == markdown",
+            "key": "Shift+Alt+B",
+            "mac": "Shift+Alt+B"
+         }
+      ],
+      "menus": {
+         "editor/context": [
+            {
+               "command": "jwe-markdown-enhanced.convertToHtml",
+               "title": "Convert to HTML",
+               "category": "JWE Markdown Enhanced",
+               "group": "jwe-markdown-enhanced@10",
+               "when": "!isWeb && editorLangId == markdown"
             },
-            "right": {
-              "type": [
-                "string",
-                "number"
-              ],
-              "default": "1cm"
-            },
-            "bottom": {
-              "type": [
-                "string",
-                "number"
-              ],
-              "default": "1cm"
-            },
-            "left": {
-              "type": [
-                "string",
-                "number"
-              ],
-              "default": "1cm"
+            {
+               "command": "jwe-markdown-enhanced.convertToPdf",
+               "title": "Convert to PDF",
+               "category": "JWE Markdown Enhanced",
+               "group": "jwe-markdown-enhanced@10",
+               "when": "!isWeb && editorLangId == markdown"
             }
-          },
-          "markdownDescription": "Margins for PDF"
-        }
-      }
-    },
-    "snippets": [
-      {
-        "language": "markdown",
-        "path": "./snippets/markdown.json"
-      }
-    ],
-    "languages": [
-      {
-        "id": "markdown",
-        "aliases": [
-          "Markdown",
-          "markdown"
-        ],
-        "extensions": [
-          ".md",
-          ".mkd",
-          ".mdwn",
-          ".mdown",
-          ".markdown",
-          ".markdn",
-          ".mdtxt",
-          ".mdtext",
-          ".workbook"
-        ],
-        "configuration": "./languages/markdown.language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "markdown",
-        "scopeName": "text.html.markdown",
-        "path": "./syntaxes/markdown.tmLanguage.json",
-        "embeddedLanguages": {
-          "meta.embedded.block.css": "css",
-          "meta.embedded.block.html": "basic",
-          "meta.embedded.block.ini": "ini",
-          "meta.embedded.block.java": "java",
-          "meta.embedded.block.lua": "lua",
-          "meta.embedded.block.makefile": "makefile",
-          "meta.embedded.block.perl": "perl",
-          "meta.embedded.block.r": "r",
-          "meta.embedded.block.ruby": "ruby",
-          "meta.embedded.block.php": "php",
-          "meta.embedded.block.sql": "sql",
-          "meta.embedded.block.vs_net": "vs_net",
-          "meta.embedded.block.xml": "xml",
-          "meta.embedded.block.xsl": "xsl",
-          "meta.embedded.block.yaml": "yaml",
-          "meta.embedded.block.dosbatch": "dosbatch",
-          "meta.embedded.block.clojure": "clojure",
-          "meta.embedded.block.coffee": "coffee",
-          "meta.embedded.block.c": "c",
-          "meta.embedded.block.cpp": "cpp",
-          "meta.embedded.block.diff": "diff",
-          "meta.embedded.block.dockerfile": "dockerfile",
-          "meta.embedded.block.git_commit": "git_commit",
-          "meta.embedded.block.git_rebase": "git_rebase",
-          "meta.embedded.block.go": "go",
-          "meta.embedded.block.groovy": "groovy",
-          "meta.embedded.block.pug": "pug",
-          "meta.embedded.block.javascript": "js",
-          "meta.embedded.block.js_regexp": "js_regexp",
-          "meta.embedded.block.json": "json",
-          "meta.embedded.block.jsonc": "jsonc",
-          "meta.embedded.block.less": "less",
-          "meta.embedded.block.objc": "objc",
-          "meta.embedded.block.swift": "swift",
-          "meta.embedded.block.scss": "scss",
-          "meta.embedded.block.perl6": "perl6",
-          "meta.embedded.block.powershell": "powershell",
-          "meta.embedded.block.python": "python",
-          "meta.embedded.block.julia": "julia",
-          "meta.embedded.block.regexp_python": "regexp_python",
-          "meta.embedded.block.rust": "rust",
-          "meta.embedded.block.scala": "scala",
-          "meta.embedded.block.shellscript": "shell",
-          "meta.embedded.block.typescript": "ts",
-          "meta.embedded.block.typescriptreact": "tsx",
-          "meta.embedded.block.csharp": "csharp",
-          "meta.embedded.block.fsharp": "fsharp",
-          "meta.embedded.block.dart": "dart",
-          "meta.embedded.block.handlebars": "handlebars",
-          "meta.embedded.block.markdown": "markdown",
-          "meta.embedded.block.log": "log",
-          "meta.embedded.block.erlang": "erlang",
-          "meta.embedded.block.elixir": "elixir",
-          "meta.embedded.block.latex": "latex",
-          "meta.embedded.block.bibtex": "bibtex",
-          "source.js": "javascript",
-          "source.css": "css",
-          "source.cpp": "cpp"
-        }
-      }
-    ],
-    "markdown.markdownItPlugins": true
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run package && npm run package-web",
-    "compile": "webpack --config webpack.main.config.js",
-    "compile-web": "webpack --config webpack.web.config.js",
-    "watch": "webpack --watch --config webpack.main.config.js",
-    "watch-web": "webpack --watch --config webpack.web.config.js",
-    "package": "webpack --mode production --devtool hidden-source-map --config webpack.main.config.js",
-    "package-web": "webpack --mode production --devtool hidden-source-map --config webpack.web.config.js",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "test-web": "node ./out/test/runTest.js",
-    "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
-  },
-  "devDependencies": {
-    "@types/glob": "^7.2.0",
-    "@types/markdown-it": "^12.2.3",
-    "@types/mocha": "^9.1.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.68.0",
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "@typescript-eslint/parser": "^5.27.0",
-    "@vscode/test-electron": "^2.1.3",
-    "@vscode/test-web": "^0.0.27",
-    "axios": "^0.27.2",
-    "eslint": "^8.16.0",
-    "glob": "^8.0.3",
-    "mocha": "^10.0.0",
-    "ts-loader": "^9.3.0",
-    "typescript": "^4.7.2",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
-  },
-  "dependencies": {
-    "markdown-it": "^13.0.1",
-    "markdown-it-abbr": "^1.0.4",
-    "markdown-it-deflist": "^2.1.0",
-    "markdown-it-emoji": "^2.0.2",
-    "markdown-it-footnote": "^3.0.3",
-    "markdown-it-mark": "^3.0.1",
-    "markdown-it-multimd-table": "^4.1.3",
-    "markdown-it-plugin-underline": "^0.0.1",
-    "markdown-it-sub": "^1.0.0",
-    "markdown-it-sup": "^1.0.0",
-    "markdown-it-task-lists": "^2.1.1",
-    "puppeteer": "^15.3.1"
-  }
+         ]
+      },
+      "configuration": {
+         "title": "JWE Markdown Enhanced",
+         "properties": {
+            "jwe-markdown-enhanced.italic": {
+               "type": "string",
+               "default": "*",
+               "description": "The character to use for italic text",
+               "enum": [
+                  "*",
+                  "_"
+               ]
+            },
+            "jwe-markdown-enhanced.superscript": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable superscript with `x^2^` in markdown preview"
+            },
+            "jwe-markdown-enhanced.subscript": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable subscript with `H~2~0` in markdown preview"
+            },
+            "jwe-enhanced-markdown.highlight": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable highlighting of text with `==Text==` in markdown preview"
+            },
+            "jwe-enhanced-markdown.underline": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable underlining of text with `++Text++` in markdown preview"
+            },
+            "jwe-enhanced-markdown.abbreviations": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable abbreviations with `*[HTML]: Hyper Text Markup Language` in markdown preview"
+            },
+            "jwe-enhanced-markdown.definitionLists": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable definition list with `Term 1\n: Definition 1` in markdown preview"
+            },
+            "jwe-enhanced-markdown.taskLists": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable task list with `- [ ] Task 1` in markdown preview"
+            },
+            "jwe-enhanced-markdown.footnotes": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable footnotes with `[^1]: Footnote 1` in markdown preview"
+            },
+            "jwe-enhanced-markdown.emoji": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable emoji with `:smile:` in markdown preview"
+            },
+            "jwe-enhanced-markdown.enhancedTables": {
+               "type": "boolean",
+               "default": true,
+               "markdownDescription": "Enable enhanced tables with [MultiMarkdown Tables](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html)"
+            },
+            "jwe-enhanced-markdown.pdf.displayHeaderFooter": {
+               "type": "boolean",
+               "default": false,
+               "markdownDescription": "Display header and footer in PDF"
+            },
+            "jwe-enhanced-markdown.pdf.headerTemplate": {
+               "type": "string",
+               "default": "",
+               "markdownDescription": "Header template for PDF"
+            },
+            "jwe-enhanced-markdown.pdf.footerTemplate": {
+               "type": "string",
+               "default": "",
+               "markdownDescription": "Footer template for PDF"
+            },
+            "jwe-enhanced-markdown.pdf.format": {
+               "type": "string",
+               "default": "Letter",
+               "enum": [
+                  "Letter",
+                  "Legal",
+                  "Tabloid",
+                  "Ledger",
+                  "A0",
+                  "A1",
+                  "A2",
+                  "A3",
+                  "A4",
+                  "A5",
+                  "A6"
+               ],
+               "markdownDescription": "Format for PDF"
+            },
+            "jwe-enhanced-markdown.pdf.landscape": {
+               "type": "boolean",
+               "default": false,
+               "markdownDescription": "Landscape for PDF"
+            },
+            "jwe-enhanced-markdown.pdf.timeout": {
+               "type": "number",
+               "default": 30000,
+               "markdownDescription": "Timeout for PDF Generation"
+            },
+            "jwe-enhanced-markdown.pdf.margin": {
+               "type": "object",
+               "default": {
+                  "top": "1cm",
+                  "right": "1cm",
+                  "bottom": "1cm",
+                  "left": "1cm"
+               },
+               "properties": {
+                  "top": {
+                     "type": [
+                        "string",
+                        "number"
+                     ],
+                     "default": "1cm"
+                  },
+                  "right": {
+                     "type": [
+                        "string",
+                        "number"
+                     ],
+                     "default": "1cm"
+                  },
+                  "bottom": {
+                     "type": [
+                        "string",
+                        "number"
+                     ],
+                     "default": "1cm"
+                  },
+                  "left": {
+                     "type": [
+                        "string",
+                        "number"
+                     ],
+                     "default": "1cm"
+                  }
+               },
+               "markdownDescription": "Margins for PDF"
+            }
+         }
+      },
+      "snippets": [
+         {
+            "language": "markdown",
+            "path": "./snippets/markdown.json"
+         }
+      ],
+      "languages": [
+         {
+            "id": "markdown",
+            "aliases": [
+               "Markdown",
+               "markdown"
+            ],
+            "extensions": [
+               ".md",
+               ".mkd",
+               ".mdwn",
+               ".mdown",
+               ".markdown",
+               ".markdn",
+               ".mdtxt",
+               ".mdtext",
+               ".workbook"
+            ],
+            "configuration": "./languages/markdown.language-configuration.json"
+         }
+      ],
+      "grammars": [
+         {
+            "language": "markdown",
+            "scopeName": "text.html.markdown",
+            "path": "./syntaxes/markdown.tmLanguage.json",
+            "embeddedLanguages": {
+               "meta.embedded.block.css": "css",
+               "meta.embedded.block.html": "basic",
+               "meta.embedded.block.ini": "ini",
+               "meta.embedded.block.java": "java",
+               "meta.embedded.block.lua": "lua",
+               "meta.embedded.block.makefile": "makefile",
+               "meta.embedded.block.perl": "perl",
+               "meta.embedded.block.r": "r",
+               "meta.embedded.block.ruby": "ruby",
+               "meta.embedded.block.php": "php",
+               "meta.embedded.block.sql": "sql",
+               "meta.embedded.block.vs_net": "vs_net",
+               "meta.embedded.block.xml": "xml",
+               "meta.embedded.block.xsl": "xsl",
+               "meta.embedded.block.yaml": "yaml",
+               "meta.embedded.block.dosbatch": "dosbatch",
+               "meta.embedded.block.clojure": "clojure",
+               "meta.embedded.block.coffee": "coffee",
+               "meta.embedded.block.c": "c",
+               "meta.embedded.block.cpp": "cpp",
+               "meta.embedded.block.diff": "diff",
+               "meta.embedded.block.dockerfile": "dockerfile",
+               "meta.embedded.block.git_commit": "git_commit",
+               "meta.embedded.block.git_rebase": "git_rebase",
+               "meta.embedded.block.go": "go",
+               "meta.embedded.block.groovy": "groovy",
+               "meta.embedded.block.pug": "pug",
+               "meta.embedded.block.javascript": "js",
+               "meta.embedded.block.js_regexp": "js_regexp",
+               "meta.embedded.block.json": "json",
+               "meta.embedded.block.jsonc": "jsonc",
+               "meta.embedded.block.less": "less",
+               "meta.embedded.block.objc": "objc",
+               "meta.embedded.block.swift": "swift",
+               "meta.embedded.block.scss": "scss",
+               "meta.embedded.block.perl6": "perl6",
+               "meta.embedded.block.powershell": "powershell",
+               "meta.embedded.block.python": "python",
+               "meta.embedded.block.julia": "julia",
+               "meta.embedded.block.regexp_python": "regexp_python",
+               "meta.embedded.block.rust": "rust",
+               "meta.embedded.block.scala": "scala",
+               "meta.embedded.block.shellscript": "shell",
+               "meta.embedded.block.typescript": "ts",
+               "meta.embedded.block.typescriptreact": "tsx",
+               "meta.embedded.block.csharp": "csharp",
+               "meta.embedded.block.fsharp": "fsharp",
+               "meta.embedded.block.dart": "dart",
+               "meta.embedded.block.handlebars": "handlebars",
+               "meta.embedded.block.markdown": "markdown",
+               "meta.embedded.block.log": "log",
+               "meta.embedded.block.erlang": "erlang",
+               "meta.embedded.block.elixir": "elixir",
+               "meta.embedded.block.latex": "latex",
+               "meta.embedded.block.bibtex": "bibtex",
+               "source.js": "javascript",
+               "source.css": "css",
+               "source.cpp": "cpp"
+            }
+         }
+      ],
+      "markdown.markdownItPlugins": true
+   },
+   "scripts": {
+      "vscode:prepublish": "npm run package && npm run package-web",
+      "compile": "webpack --config webpack.main.config.js",
+      "compile-web": "webpack --config webpack.web.config.js",
+      "watch": "webpack --watch --config webpack.main.config.js",
+      "watch-web": "webpack --watch --config webpack.web.config.js",
+      "package": "webpack --mode production --devtool hidden-source-map --config webpack.main.config.js",
+      "package-web": "webpack --mode production --devtool hidden-source-map --config webpack.web.config.js",
+      "compile-tests": "tsc -p . --outDir out",
+      "watch-tests": "tsc -p . -w --outDir out",
+      "pretest": "npm run compile-tests && npm run compile && npm run lint",
+      "lint": "eslint src --ext ts",
+      "test": "node ./out/test/runTest.js",
+      "test-web": "node ./out/test/runTest.js",
+      "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
+   },
+   "devDependencies": {
+      "@types/glob": "^7.2.0",
+      "@types/markdown-it": "^12.2.3",
+      "@types/mocha": "^9.1.1",
+      "@types/node": "16.x",
+      "@types/vscode": "^1.68.0",
+      "@typescript-eslint/eslint-plugin": "^5.27.0",
+      "@typescript-eslint/parser": "^5.27.0",
+      "@vscode/test-electron": "^2.1.3",
+      "@vscode/test-web": "^0.0.27",
+      "axios": "^0.27.2",
+      "eslint": "^8.16.0",
+      "glob": "^8.0.3",
+      "mocha": "^10.0.0",
+      "ts-loader": "^9.3.0",
+      "typescript": "^4.7.2",
+      "webpack": "^5.72.1",
+      "webpack-cli": "^4.9.2"
+   },
+   "dependencies": {
+      "gemoji": "^7.1.0",
+      "markdown-it": "^13.0.1",
+      "markdown-it-abbr": "^1.0.4",
+      "markdown-it-deflist": "^2.1.0",
+      "markdown-it-emoji": "^2.0.2",
+      "markdown-it-footnote": "^3.0.3",
+      "markdown-it-mark": "^3.0.1",
+      "markdown-it-multimd-table": "^4.1.3",
+      "markdown-it-plugin-underline": "^0.0.1",
+      "markdown-it-sub": "^1.0.0",
+      "markdown-it-sup": "^1.0.0",
+      "markdown-it-task-lists": "^2.1.1",
+      "puppeteer": "^15.3.1"
+   }
 }

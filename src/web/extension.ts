@@ -8,6 +8,7 @@ import { convertToHtml } from '../common/convertToHtml';
 
 import { extendMarkdownIt } from '../common/extendMarkdownIt';
 import MarkdownFoldingProvider from '../common/folding';
+import EmojiCompletionProvider from '../common/completion/emoji';
 
 export function activate(context: vscode.ExtensionContext) {
    console.log(
@@ -18,8 +19,13 @@ export function activate(context: vscode.ExtensionContext) {
 
    context.subscriptions.push(
       vscode.languages.registerFoldingRangeProvider(
-         { language: 'markdown' },
+         'markdown',
          new MarkdownFoldingProvider()
+      ),
+      vscode.languages.registerCompletionItemProvider(
+         'markdown',
+         new EmojiCompletionProvider(),
+         ':'
       )
    );
 
