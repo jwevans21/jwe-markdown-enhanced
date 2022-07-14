@@ -9,7 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const config = {
    target: 'web',
    entry: {
-      mermaid: path.join(__dirname, 'node_modules/mermaid/dist/mermaid.min.js'),
+      mermaid: path.join(__dirname, 'media/mermaid.js'),
    },
    externals: 'fs', // in order to make mermaid work
    output: {
