@@ -1,0 +1,241 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css");
+.vscode-dark {
+  --jwe-admonition-note: #448aff;
+  --jwe-admonition-abstract: #00b0ff;
+  --jwe-admonition-summary: var(--jwe-admonition-abstract);
+  --jwe-admonition-tldr: var(--jwe-admonition-abstract);
+  --jwe-admonition-info: #00b8d4;
+  --jwe-admonition-todo: var(--jwe-admonition-info);
+  --jwe-admonition-tip: #000;
+  --jwe-admonition-hint: var(--jwe-admonition-tip);
+  --jwe-admonition-important: var(--jwe-admonition-tip);
+  --jwe-admonition-success: #00c853;
+  --jwe-admonition-check: var(--jwe-admonition-success);
+  --jwe-admonition-done: var(--jwe-admonition-success);
+  --jwe-admonition-question: #64dd17;
+  --jwe-admonition-help: var(--jwe-admonition-question);
+  --jwe-admonition-faq: var(--jwe-admonition-question);
+  --jwe-admonition-warning: #ff9100;
+  --jwe-admonition-caution: var(--jwe-admonition-warning);
+  --jwe-admonition-attention: var(--jwe-admonition-warning);
+  --jwe-admonition-failure: #ff5252;
+  --jwe-admonition-fail: var(--jwe-admonition-failure);
+  --jwe-admonition-missing: var(--jwe-admonition-failure);
+  --jwe-admonition-danger: #ff1744;
+  --jwe-admonition-error: var(--jwe-admonition-danger);
+  --jwe-admonition-bug: #f50057;
+  --jwe-admonition-example: #7c4dff;
+  --jwe-admonition-quote: #9e9e9e;
+  --jwe-admonition-cite: var(--jwe-admonition-quote);
+}
+
+.vscode-light {
+  --jwe-admonition-note: #448aff;
+  --jwe-admonition-abstract: #00b0ff;
+  --jwe-admonition-summary: var(--jwe-admonition-abstract);
+  --jwe-admonition-tldr: var(--jwe-admonition-abstract);
+  --jwe-admonition-info: #00b8d4;
+  --jwe-admonition-todo: var(--jwe-admonition-info);
+  --jwe-admonition-tip: #000;
+  --jwe-admonition-hint: var(--jwe-admonition-tip);
+  --jwe-admonition-important: var(--jwe-admonition-tip);
+  --jwe-admonition-success: #00c853;
+  --jwe-admonition-check: var(--jwe-admonition-success);
+  --jwe-admonition-done: var(--jwe-admonition-success);
+  --jwe-admonition-question: #64dd17;
+  --jwe-admonition-help: var(--jwe-admonition-question);
+  --jwe-admonition-faq: var(--jwe-admonition-question);
+  --jwe-admonition-warning: #ff9100;
+  --jwe-admonition-caution: var(--jwe-admonition-warning);
+  --jwe-admonition-attention: var(--jwe-admonition-warning);
+  --jwe-admonition-failure: #ff5252;
+  --jwe-admonition-fail: var(--jwe-admonition-failure);
+  --jwe-admonition-missing: var(--jwe-admonition-failure);
+  --jwe-admonition-danger: #ff1744;
+  --jwe-admonition-error: var(--jwe-admonition-danger);
+  --jwe-admonition-bug: #f50057;
+  --jwe-admonition-example: #7c4dff;
+  --jwe-admonition-quote: #9e9e9e;
+  --jwe-admonition-cite: var(--jwe-admonition-quote);
+}
+
+.admonition {
+  border-radius: 0.5em;
+  box-shadow: #000 0 0 0.1em;
+  margin-block: 0.5em;
+}
+.admonition-title {
+  margin: 0;
+  padding: 0.5em;
+  font-weight: bold;
+  border-radius: 0 0.5em 0 0;
+}
+.admonition p {
+  margin: 0;
+  padding: 0.5em;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.admonition-note {
+  border-left: 0.5em solid var(--jwe-admonition-note);
+}
+.admonition-note .admonition-title {
+  background-color: var(--jwe-admonition-note);
+}
+.admonition-abstract {
+  border-left: 0.5em solid var(--jwe-admonition-abstract);
+}
+.admonition-abstract .admonition-title {
+  background-color: var(--jwe-admonition-abstract);
+}
+.admonition-summary {
+  border-left: 0.5em solid var(--jwe-admonition-summary);
+}
+.admonition-summary .admonition-title {
+  background-color: var(--jwe-admonition-summary);
+}
+.admonition-tldr {
+  border-left: 0.5em solid var(--jwe-admonition-tldr);
+}
+.admonition-tldr .admonition-title {
+  background-color: var(--jwe-admonition-tldr);
+}
+.admonition-info {
+  border-left: 0.5em solid var(--jwe-admonition-info);
+}
+.admonition-info .admonition-title {
+  background-color: var(--jwe-admonition-info);
+}
+.admonition-todo {
+  border-left: 0.5em solid var(--jwe-admonition-todo);
+}
+.admonition-todo .admonition-title {
+  background-color: var(--jwe-admonition-todo);
+}
+.admonition-tip {
+  border-left: 0.5em solid var(--jwe-admonition-tip);
+}
+.admonition-tip .admonition-title {
+  background-color: var(--jwe-admonition-tip);
+}
+.admonition-hint {
+  border-left: 0.5em solid var(--jwe-admonition-hint);
+}
+.admonition-hint .admonition-title {
+  background-color: var(--jwe-admonition-hint);
+}
+.admonition-important {
+  border-left: 0.5em solid var(--jwe-admonition-important);
+}
+.admonition-important .admonition-title {
+  background-color: var(--jwe-admonition-important);
+}
+.admonition-success {
+  border-left: 0.5em solid var(--jwe-admonition-success);
+}
+.admonition-success .admonition-title {
+  background-color: var(--jwe-admonition-success);
+}
+.admonition-check {
+  border-left: 0.5em solid var(--jwe-admonition-check);
+}
+.admonition-check .admonition-title {
+  background-color: var(--jwe-admonition-check);
+}
+.admonition-done {
+  border-left: 0.5em solid var(--jwe-admonition-done);
+}
+.admonition-done .admonition-title {
+  background-color: var(--jwe-admonition-done);
+}
+.admonition-question {
+  border-left: 0.5em solid var(--jwe-admonition-question);
+}
+.admonition-question .admonition-title {
+  background-color: var(--jwe-admonition-question);
+}
+.admonition-help {
+  border-left: 0.5em solid var(--jwe-admonition-help);
+}
+.admonition-help .admonition-title {
+  background-color: var(--jwe-admonition-help);
+}
+.admonition-faq {
+  border-left: 0.5em solid var(--jwe-admonition-faq);
+}
+.admonition-faq .admonition-title {
+  background-color: var(--jwe-admonition-faq);
+}
+.admonition-warning {
+  border-left: 0.5em solid var(--jwe-admonition-warning);
+}
+.admonition-warning .admonition-title {
+  background-color: var(--jwe-admonition-warning);
+}
+.admonition-caution {
+  border-left: 0.5em solid var(--jwe-admonition-caution);
+}
+.admonition-caution .admonition-title {
+  background-color: var(--jwe-admonition-caution);
+}
+.admonition-attention {
+  border-left: 0.5em solid var(--jwe-admonition-attention);
+}
+.admonition-attention .admonition-title {
+  background-color: var(--jwe-admonition-attention);
+}
+.admonition-failure {
+  border-left: 0.5em solid var(--jwe-admonition-failure);
+}
+.admonition-failure .admonition-title {
+  background-color: var(--jwe-admonition-failure);
+}
+.admonition-fail {
+  border-left: 0.5em solid var(--jwe-admonition-fail);
+}
+.admonition-fail .admonition-title {
+  background-color: var(--jwe-admonition-fail);
+}
+.admonition-missing {
+  border-left: 0.5em solid var(--jwe-admonition-missing);
+}
+.admonition-missing .admonition-title {
+  background-color: var(--jwe-admonition-missing);
+}
+.admonition-danger {
+  border-left: 0.5em solid var(--jwe-admonition-danger);
+}
+.admonition-danger .admonition-title {
+  background-color: var(--jwe-admonition-danger);
+}
+.admonition-error {
+  border-left: 0.5em solid var(--jwe-admonition-error);
+}
+.admonition-error .admonition-title {
+  background-color: var(--jwe-admonition-error);
+}
+.admonition-bug {
+  border-left: 0.5em solid var(--jwe-admonition-bug);
+}
+.admonition-bug .admonition-title {
+  background-color: var(--jwe-admonition-bug);
+}
+.admonition-example {
+  border-left: 0.5em solid var(--jwe-admonition-example);
+}
+.admonition-example .admonition-title {
+  background-color: var(--jwe-admonition-example);
+}
+.admonition-quote {
+  border-left: 0.5em solid var(--jwe-admonition-quote);
+}
+.admonition-quote .admonition-title {
+  background-color: var(--jwe-admonition-quote);
+}
+.admonition-cite {
+  border-left: 0.5em solid var(--jwe-admonition-cite);
+}
+.admonition-cite .admonition-title {
+  background-color: var(--jwe-admonition-cite);
+}
+
+/*# sourceMappingURL=styles.css.map */

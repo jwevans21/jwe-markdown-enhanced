@@ -11,6 +11,11 @@ import * as tasks from 'markdown-it-task-lists';
 import * as footnote from 'markdown-it-footnote';
 import * as emoji from 'markdown-it-emoji';
 import * as multiMdTable from 'markdown-it-multimd-table';
+import mermaid from '@jwevans/markdown-it-mermaid';
+import admonition from '@jwevans/markdown-it-admonitions';
+import lineNumbers from '@jwevans/markdown-it-code-block-line-numbers';
+import titledCode from '@jwevans/markdown-it-titled-code-blocks';
+import highlightInlineCode from '@jwevans/markdown-it-highlight-inline-code';
 
 export function extendMarkdownIt(md: MarkdownIt) {
    const config = {
@@ -24,6 +29,11 @@ export function extendMarkdownIt(md: MarkdownIt) {
       footnotes: getConfig('footnotes', true),
       emoji: getConfig('emoji', true),
       enhancedTables: getConfig('enhancedTables', true),
+      mermaid: getConfig('mermaid', true),
+      admonitions: getConfig('admonitions', true),
+      lineNumbers: getConfig('lineNumbers', true),
+      titledCode: getConfig('titledCode', true),
+      highlightInlineCode: getConfig('highlightInlineCode', true),
    };
 
    if (config.superscript) {
@@ -59,6 +69,21 @@ export function extendMarkdownIt(md: MarkdownIt) {
          rowspan: true,
          headerless: true,
       });
+   }
+   if (config.mermaid) {
+      md.use(mermaid);
+   }
+   if (config.admonitions) {
+      md.use(admonition);
+   }
+   if (config.lineNumbers) {
+      md.use(lineNumbers);
+   }
+   if (config.titledCode) {
+      md.use(titledCode);
+   }
+   if (config.highlightInlineCode) {
+      md.use(highlightInlineCode);
    }
 
    return md;
